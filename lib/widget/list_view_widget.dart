@@ -158,13 +158,18 @@ class ListViewWidget extends StatelessWidget {
   }
 
   Future _insert(String title, String description, String imageHref) async {
-    Map<String, dynamic> row = {
-      DatabaseHelper.title: title,
-      DatabaseHelper.description: description,
-      DatabaseHelper.imageHref: imageHref,
-    };
+    if (fetchSqliteDB?.isNotEmpty == true) {
+      await dbHelper.deleteDB();
+      await Future.delayed(const Duration(seconds: 1));
+    } else {
+      Map<String, dynamic> row = {
+        DatabaseHelper.title: title,
+        DatabaseHelper.description: description,
+        DatabaseHelper.imageHref: imageHref,
+      };
 
-    final id = await dbHelper.insert(row);
-    debugPrint("Id is:   $id");
+      final id = await dbHelper.insert(row);
+      debugPrint("Id is:   $id");
+    }
   }
 }
