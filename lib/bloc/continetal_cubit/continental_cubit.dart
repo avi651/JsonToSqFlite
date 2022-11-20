@@ -1,9 +1,8 @@
 import 'dart:developer';
 import 'package:bloc/bloc.dart';
-import 'package:contintal/bloc/continental_state.dart';
-
-import '../helpers/custom_error.dart';
-import '../repository/continental_repository.dart';
+import '../../helpers/custom_error.dart';
+import '../../repository/continental_repository.dart';
+import 'continental_state.dart';
 
 class ContinentalCubit extends Cubit<ContinentalState> {
   final ContinentalRepository continentalRepository;

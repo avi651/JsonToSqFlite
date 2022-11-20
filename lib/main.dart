@@ -1,8 +1,9 @@
-import 'package:contintal/bloc/continental_cubit.dart';
+import 'package:contintal/bloc/theme_cubit/theme_cubit.dart';
 import 'package:contintal/bloc_observer/bloc_observer.dart';
 import 'package:contintal/services/continental_api_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'bloc/continetal_cubit/continental_cubit.dart';
 import 'repository/continental_repository.dart';
 import 'screens/home_screen.dart';
 
@@ -27,6 +28,9 @@ class MyApp extends StatelessWidget {
             create: (context) => ContinentalCubit(
               continentalRepository: context.read<ContinentalRepository>(),
             ),
+          ),
+          BlocProvider<ThemeCubit>(
+            create: (context) => ThemeCubit(),
           ),
         ],
         child: MaterialApp(
